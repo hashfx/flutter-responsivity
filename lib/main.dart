@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         40,
                         (index) => Card(
                           color: Colors.orange,
-                          child: Center(child: Text('Item $index')),
+                          child: Center(child: Text('Item ${index+1}')),
                         ),
                       ),
                     ),
