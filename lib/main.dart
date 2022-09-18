@@ -29,46 +29,33 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
-  Widget build(BuildContext context) => OrientationBuilder(
-        builder: ((context, orientation) {
-          final isPortrait = orientation == Orientation.portrait;
-          final isMobile = MediaQuery.of(context).size.shortestSide < 600;
+  Widget build(BuildContext context) =>
+      OrientationBuilder(builder: ((context, orientation) {
+        final isPortrait = orientation == Orientation.portrait;
 
-          return Scaffold(
-              appBar: AppBar(
-                title: const Text('Grid View'),
-              ),
-              drawer: isMobile
-                  ? Drawer(
-                      child: Container(
-                        color: Colors.blue,
-                        width: 300,
-                        child: const Center(child: Text('SIDEBAR')),
-                      ),
-                    )
-                  : null,
-              body: Row(
-                children: [
-                  if (!isMobile)
-                    Container(
-                      color: Colors.blue,
-                      width: 300,
-                      child: const Center(child: Text('Sidebar')),
-                    ),
-                  Expanded(
-                    child: GridView.count(
-                      crossAxisCount: isPortrait ? 2 : 3,
-                      children: List.generate(
-                        40,
-                        (index) => Card(
-                          color: Colors.orange,
-                          child: Center(child: Text('Item $index')),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ));
-        }),
-      );
-}
+        return isPortrait
+            ? Container(
+                color: Colors.blue,
+                child: const Center(child: Text('PORTRAIT')),
+              )
+            : Container(
+                color: Colors.green,
+                child: const Center(child: Text('LANDSCAPE')));
+      }));
+  // {
+  //   return Scaffold(
+  //     appBar: AppBar(
+  //       title: const Text('ORIENTATION'),
+  //       ),
+  //       body: MediaQuery.of(context).orientation == Orientation.portrait
+  //       ? Container( // portrait
+  //         color: Colors.blue,
+  //         child: const Center(child: Text('PORTRAIT')),
+  //       )
+  //       : Container( // landscape
+  //           color: Colors.green,
+  //           child: const Center(child: Text('LANDSCAPE')),
+  //       )
+  //   );
+  // }
+  }
