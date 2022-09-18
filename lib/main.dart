@@ -29,33 +29,24 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
-  Widget build(BuildContext context) =>
-      OrientationBuilder(builder: ((context, orientation) {
-        final isPortrait = orientation == Orientation.portrait;
+  Widget build(BuildContext context) => OrientationBuilder(
+        builder: ((context, orientation) {
+          final isPortrait = orientation == Orientation.portrait;
 
-        return isPortrait
-            ? Container(
-                color: Colors.blue,
-                child: const Center(child: Text('PORTRAIT')),
-              )
-            : Container(
-                color: Colors.green,
-                child: const Center(child: Text('LANDSCAPE')));
-      }));
-  // {
-  //   return Scaffold(
-  //     appBar: AppBar(
-  //       title: const Text('ORIENTATION'),
-  //       ),
-  //       body: MediaQuery.of(context).orientation == Orientation.portrait
-  //       ? Container( // portrait
-  //         color: Colors.blue,
-  //         child: const Center(child: Text('PORTRAIT')),
-  //       )
-  //       : Container( // landscape
-  //           color: Colors.green,
-  //           child: const Center(child: Text('LANDSCAPE')),
-  //       )
-  //   );
-  // }
+          return Scaffold(
+              appBar: AppBar(
+                title: const Text('Grid View'),
+              ),
+              body: GridView.count(
+                crossAxisCount: 2,
+                children: List.generate(
+                  40,
+                  (index) => Card(
+                    color: Colors.orange,
+                    child: Center(child: Text('Item $index')),
+                  ),
+                ),
+              ));
+        }),
+      );
 }
