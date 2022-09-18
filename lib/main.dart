@@ -47,11 +47,12 @@ class _MyHomePageState extends State<MyHomePage> {
       /* divide screen into 200x* width */
       body: Row(
         children: [
-          Container(
-            color: Colors.blue,
-            width: 200,
-            child: const Center(child: Text('SIDEBAR')),
-          ),
+          if (isDesktop(context))
+            Container(
+              color: Colors.blue,
+              width: 200,
+              child: const Center(child: Text('SIDEBAR')),
+            ),
           Expanded(
             child: Container(
               color: Colors.red,
