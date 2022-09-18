@@ -28,39 +28,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool isDesktop(BuildContext context) =>
-      MediaQuery.of(context).size.width >= 600;
-
-  bool isMobile(BuildContext context) =>
-      MediaQuery.of(context).size.width < 600;
-
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      /* to get screen width and height */
-      // body: Center(
-      //   child: Text('$screenWidth, $screenHeight'),
-      // )
-
-      /* divide screen into 200x* width */
-      body: Row(
-        children: [
-          if (isDesktop(context))
-            Container(
-              color: Colors.blue,
-              width: 200,
-              child: const Center(child: Text('SIDEBAR')),
-            ),
-          Expanded(
-            child: Container(
-              color: Colors.red,
-              child: const Center(child: Text('CONTENT')),
-            ),
-          ),
-        ],
-      ),
+      appBar: AppBar(
+        title: const Text('ORIENTATION'),
+        ),
+        body: MediaQuery.of(context).orientation == Orientation.portrait
+        ? Container( // portrait
+          color: Colors.blue,
+          child: const Center(child: Text('PORTRAIT')),
+        )
+        : Container( // landscape
+            color: Colors.green,
+            child: const Center(child: Text('LANDSCAPE')),
+        )
     );
   }
 }
