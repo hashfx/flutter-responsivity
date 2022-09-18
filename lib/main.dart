@@ -40,9 +40,26 @@ class _MyHomePageState extends State<MyHomePage> {
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       /* to get screen width and height */
-      body: Center(
-        child: Text('$screenWidth, $screenHeight'),
-      )
+      // body: Center(
+      //   child: Text('$screenWidth, $screenHeight'),
+      // )
+
+      /* divide screen into 200x* width */
+      body: Row(
+        children: [
+          Container(
+            color: Colors.blue,
+            width: 200,
+            child: const Center(child: Text('SIDEBAR')),
+          ),
+          Expanded(
+            child: Container(
+              color: Colors.red,
+              child: const Center(child: Text('CONTENT')),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
