@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
       /* to get screen width and height */
       body: Center(
         child: Text('$screenWidth, $screenHeight'),
-      ),
+      )
     );
   }
 }
