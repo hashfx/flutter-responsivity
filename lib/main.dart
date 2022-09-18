@@ -32,11 +32,21 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) => OrientationBuilder(
         builder: ((context, orientation) {
           final isPortrait = orientation == Orientation.portrait;
+          final isMobile = MediaQuery.of(context).size.shortestSide < 600;
 
           return Scaffold(
               appBar: AppBar(
                 title: const Text('Grid View'),
               ),
+              drawer: isMobile
+              ? Drawer(
+                child: Container(
+                  color: Colors.blue,
+                  width: 300,
+                  child: const Center(child: Text('SIDEBAR')),
+                ),
+              )
+              : null,
               body: GridView.count(
                 crossAxisCount: isPortrait ? 2 : 3,
                 children: List.generate(
