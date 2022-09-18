@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 title: const Text('Grid View'),
               ),
               body: GridView.count(
-                crossAxisCount: 2,
+                crossAxisCount: isPortrait ? 2 : 3,
                 children: List.generate(
                   40,
                   (index) => Card(
