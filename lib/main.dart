@@ -39,23 +39,35 @@ class _MyHomePageState extends State<MyHomePage> {
                 title: const Text('Grid View'),
               ),
               drawer: isMobile
-              ? Drawer(
-                child: Container(
-                  color: Colors.blue,
-                  width: 300,
-                  child: const Center(child: Text('SIDEBAR')),
-                ),
-              )
-              : null,
-              body: GridView.count(
-                crossAxisCount: isPortrait ? 2 : 3,
-                children: List.generate(
-                  40,
-                  (index) => Card(
-                    color: Colors.orange,
-                    child: Center(child: Text('Item $index')),
+                  ? Drawer(
+                      child: Container(
+                        color: Colors.blue,
+                        width: 300,
+                        child: const Center(child: Text('SIDEBAR')),
+                      ),
+                    )
+                  : null,
+              body: Row(
+                children: [
+                  if (!isMobile)
+                    Container(
+                      color: Colors.blue,
+                      width: 300,
+                      child: const Center(child: Text('Sidebar')),
+                    ),
+                  Expanded(
+                    child: GridView.count(
+                      crossAxisCount: isPortrait ? 2 : 3,
+                      children: List.generate(
+                        40,
+                        (index) => Card(
+                          color: Colors.orange,
+                          child: Center(child: Text('Item $index')),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ));
         }),
       );
